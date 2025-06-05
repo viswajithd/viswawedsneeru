@@ -1,1 +1,60 @@
-[...CSS content from previous cell...]
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #fff8f1;
+  color: #333;
+  line-height: 1.6;
+}
+
+header {
+  background: #f5e8da;
+  padding: 2rem;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+header span {
+  font-style: italic;
+  font-size: 1.3rem;
+  color: #a75d2b;
+}
+
+.highlight {
+  font-weight: bold;
+  color: #6e3f1b;
+}
+
+section {
+  padding: 2rem;
+}
+
+.reception {
+  background: #ffe9dc;
+  border-left: 5px solid #e29578;
+  margin: 2rem 0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li a {
+  text-decoration: none;
+  color: #005c4b;
+  display: block;
+  margin: 0.5rem 0;
+}
+
+footer {
+  background: #f5e8da;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  margin-top: 2rem;
+}
