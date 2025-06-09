@@ -4,114 +4,71 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Wedding Invitation - Viswajith & Niranjana</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #fff8f0;
-      color: #333;
-    }
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 2rem;
-    }
-    .highlight-box {
-      border: 2px dashed #cc9966;
-      padding: 1rem;
-      background: #fffbe6;
-      text-align: center;
-      margin-top: 2rem;
-    }
-    .section {
-      margin-bottom: 2rem;
-    }
-    .section-title {
-      font-size: 1.5rem;
-      color: #663300;
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-    .rsvp-buttons {
-      display: flex;
-      justify-content: space-around;
-      margin-top: 1rem;
-    }
-    .rsvp-buttons button {
-      background-color: #cc9966;
-      color: white;
-      padding: 0.75rem 1.5rem;
-      border: none;
-      cursor: pointer;
-      border-radius: 8px;
-      font-weight: bold;
-    }
-    .map-section {
-      border: 1px solid #ccc;
-      padding: 1rem;
-      margin-top: 2rem;
-      background-color: #fafafa;
-    }
-    .location-box {
-      margin-bottom: 1rem;
-    }
-  </style>
+  <title>Wedding Invitation</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
-    <div class="section">
-      <h1 class="section-title">Wedding Invitation</h1>
-      <h2 style="text-align: center;">Viswajith & Niranjana</h2>
-      <p style="text-align: center;">25th August - Marriage<br />27th August - Reception</p>
+  <header class="header">
+    <h1 class="kerala-font">Wedding Invitation</h1>
+    <h2>Viswajith & Niranjana</h2>
+    <p>25th August - Marriage | 27th August - Reception</p>
+  </header>
+
+  <section class="formal-invite">
+    <p>I Mrs. Dr. Kairali Dileep, Ashtapathi House, Chottanikkara, Thazhakkal Family, Ernakulam,<br/>
+    Request the honour of your gracious presence & blessings on the auspicious occasion of my son’s Marriage.</p>
+
+    <div class="highlight-box">
+      <h3>Viswajith D</h3>
+      <p>S/o Smt Dr. Kairali Dileep & Shri Dileepan TS (late)</p>
+      <h3>weds</h3>
+      <h3>Niranjana Pradeep</h3>
+      <p>D/o Smt. Bindu Pradeep & Shri Pradeep Ganakan</p>
     </div>
 
-    <div class="section highlight-box">
-      <p><strong>I Mrs .Dr.Kairali Dileep, Ashtapathi House, Chottanikkara, Thazhakkal Family, Ernakulam</strong></p>
-      <p>Request the honour of your gracious presence & blessings on the auspicious occasion of my son’s Marriage Reception</p>
-      <h3>Viswajith D<br />(S/o Smt Dr Kairali Dileep & Shri Dileepan TS (late))</h3>
-      <h3>Weds</h3>
-      <h3>Niranjana Pradeep<br />(D/o Smt. Bindu Pradeep & Shri Pradeep Ganakan)</h3>
-      <p><strong>On Monday, 25th August 2025 (1201 chingam 09)<br />at Lalith Mahal Kalyana Mandapam, West Fort, Trivandrum</strong></p>
-      <p style="font-size: 1.2rem; font-weight: bold;">Muhurtham: 11:00 AM to 11:40 AM</p>
+    <div class="details">
+      <p><strong>Date:</strong> Monday, 25th August 2025 (1201 Chingam 09)</p>
+      <p><strong>Venue:</strong> <a href="https://maps.app.goo.gl/sDXLrUbBY6ens6vF9" target="_blank">Lalith Mahal Kalyana Mandapam, West Fort, Trivandrum</a></p>
+      <p><strong>Muhurtham:</strong> 11:00 AM to 11:40 AM</p>
     </div>
+  </section>
 
-    <div class="section highlight-box">
-      <h2>Reception Details</h2>
-      <p>You are also cordially invited to grace the Wedding Reception of Viswajith & Niranjana on Wednesday, 27th August 2025 at <a href="https://maps.app.goo.gl/RiVvpVF2u7eCCMBQ6" target="_blank">SGP Hall, Thiruvankulam, Kochi</a> from 6:00 PM to 9:00 PM</p>
-      <p><strong>With Best Compliments from Abhijith D & Nithya Abhijith</strong></p>
-    </div>
+  <section class="reception">
+    <h3>Wedding Reception</h3>
+    <p>Wednesday, 27th August 2025<br/>
+    <a href="https://maps.app.goo.gl/RiVvpVF2u7eCCMBQ6" target="_blank">SGP Hall, Thiruvankulam, Kochi</a><br/>
+    From 6:00 PM to 9:00 PM</p>
+  </section>
 
-    <div class="section highlight-box">
-      <h2>RSVP</h2>
-      <p>Click below to add the events to your calendar</p>
-      <div class="rsvp-buttons">
-        <button onclick="window.open('https://calendar.google.com/', '_blank')">I'm attending Wedding</button>
-        <button onclick="window.open('https://calendar.google.com/', '_blank')">I'm attending Reception</button>
-      </div>
-    </div>
+  <section class="rsvp-box">
+    <h3>RSVP</h3>
+    <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Viswajith+Weds+Niranjana&dates=20250825T053000Z/20250825T061000Z&details=Muhurtham+at+Lalith+Mahal+Kalyana+Mandapam,+Trivandrum&location=Lalith+Mahal+Kalyana+Mandapam,+West+Fort,+Trivandrum&sf=true" class="rsvp-btn">I'm attending the Wedding</a>
+    <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wedding+Reception+of+Viswajith+%26+Niranjana&dates=20250827T123000Z/20250827T153000Z&details=Reception+at+SGP+Hall,+Kochi&location=SGP+Hall,+Thiruvankulam,+Kochi&sf=true" class="rsvp-btn">I'm attending the Reception</a>
+  </section>
 
-    <div class="section map-section">
-      <h2 class="section-title">Location Guide & Nearby Landmarks</h2>
-      <p style="text-align: center;">You can click on the name of the place to open it in Google Maps for easy access.</p>
-      <div class="location-box">
-        <h3>Marriage Venue: <a href="https://maps.app.goo.gl/sDXLrUbBY6ens6vF9" target="_blank">Lalith Mahal Kalyana Mandapam, Trivandrum</a></h3>
-        <ul>
-          <li><a href="https://g.co/kgs/csyC773" target="_blank">Padmanabhaswamy Temple – 350 m</a></li>
-          <li><a href="https://g.co/kgs/43DwBDH" target="_blank">Sunil’s Wax Museum – 800 m</a></li>
-          <li><a href="https://maps.app.goo.gl/poT88mU9nP8Tcsed6" target="_blank">Kuthiramalika Palace – 850 m</a></li>
-        </ul>
-      </div>
-      <div class="location-box">
-        <h3>Reception Venue: <a href="https://maps.app.goo.gl/RiVvpVF2u7eCCMBQ6" target="_blank">SGP Hall, Kochi</a></h3>
-        <ul>
-          <li><a href="https://maps.app.goo.gl/dxfP3kUvrLCca8zBA" target="_blank">Hill Palace Museum – 1.5 km</a></li>
-          <li><a href="https://maps.app.goo.gl/b2Qa5Lp9UJxup5yXA" target="_blank">Chottanikkara Bhagavathy Temple – 3.4 km</a></li>
-          <li><a href="https://maps.app.goo.gl/hwJzdJerChhv5NZVA" target="_blank">Thrippunithura Railway Station – 3.1 km</a></li>
-        </ul>
-      </div>
+  <section class="location-guide">
+    <h3>Location Guide & Nearby Landmarks</h3>
+    <div class="location-box">
+      <h4>📍 Marriage Venue – <a href="https://maps.app.goo.gl/sDXLrUbBY6ens6vF9" target="_blank">Lalith Mahal Kalyana Mandapam</a></h4>
+      <ul>
+        <li><a href="https://g.co/kgs/csyC773" target="_blank">Padmanabhaswamy Temple – 350 m</a></li>
+        <li><a href="https://g.co/kgs/43DwBDH" target="_blank">Sunil’s Wax Museum – 800 m</a></li>
+        <!-- More... -->
+      </ul>
     </div>
-  </div>
+    <div class="location-box">
+      <h4>📍 Reception Venue – <a href="https://maps.app.goo.gl/RiVvpVF2u7eCCMBQ6" target="_blank">SGP Hall, Kochi</a></h4>
+      <ul>
+        <li><a href="https://maps.app.goo.gl/dxfP3kUvrLCca8zBA" target="_blank">Hill Palace Museum – 1.5 km</a></li>
+        <!-- More... -->
+      </ul>
+    </div>
+    <p class="note">Click on the place names to open in Google Maps for easy access.</p>
+  </section>
+
+  <footer class="footer">
+    <p>With Best Compliments from<br/>Abhijith D & Nithya Abhijith</p>
+    <p>📞 80157 79275 / 98955 00618</p>
+  </footer>
 </body>
 </html>

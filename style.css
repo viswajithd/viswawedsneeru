@@ -1,44 +1,56 @@
+
 body {
   font-family: 'Segoe UI', sans-serif;
-  background-color: #fff9ef;
-  color: #333;
   margin: 0;
   padding: 0;
-  line-height: 1.6;
+  background: #f9f9f9;
+  color: #333;
 }
-header, section, footer {
+.header, .formal-invite, .reception, .rsvp-box, .location-guide, .footer {
   padding: 20px;
-  margin: auto;
-  max-width: 900px;
+  margin: 20px auto;
+  max-width: 800px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
 }
-header {
-  background-color: #f4e6cc;
+.kerala-font {
+  font-family: 'Times New Roman', serif;
+  font-size: 2.5em;
+  color: #b48b2f;
+}
+.highlight-box {
+  border: 2px solid #d4a373;
+  padding: 10px;
   text-align: center;
-  padding: 40px 20px;
+  margin: 20px 0;
 }
-header h1 {
-  font-family: cursive;
-  color: #b38135;
-}
-header h2 span {
-  display: block;
-  font-size: 1.2em;
-}
-section h3 {
-  color: #b38135;
-  font-family: cursive;
-  border-bottom: 1px solid #ddd;
-}
-a {
-  color: #8b5e3c;
+.rsvp-btn {
+  display: inline-block;
+  margin: 10px 10px 0 0;
+  padding: 12px 20px;
+  background-color: #d4a373;
+  color: #fff;
   text-decoration: none;
+  border-radius: 6px;
 }
-a:hover {
-  text-decoration: underline;
-}
-footer {
+.rsvp-box {
+  background-color: #fff3e0;
+  border: 1px solid #f0c674;
   text-align: center;
+}
+.location-box {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px 0;
+}
+.footer {
+  background-color: #fdf3e7;
+  text-align: center;
+  font-weight: bold;
+}
+.note {
   font-style: italic;
-  padding: 20px;
+  font-size: 0.9em;
   color: #666;
 }
