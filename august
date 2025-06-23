@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viswajith & Niranjana Wedding Invitation</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Custom Styles for Kerala Heritage Theme */
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #fdfaf6, #fffbf7); /* Subtle warm cream background */
+            color: #333;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+            opacity: 0; /* Initially hidden for fade-in effect */
+            transition: opacity 1s ease-in-out; /* Smooth fade-in for content */
+
+            /* Overall Kerala-inspired pattern (subtle) */
+            background-image: url('data:image/svg+xml,%3Csvg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="%23eee6da" fill-opacity="0.4"%3E%3Cpath d="M10 0h20L10 30V0zm10 40h20L30 70V40zM40 0h20L40 30V0zm10 40h20L60 70V40z"/%3E%3C/g%3E%3C/svg%3E'); /* Simple geometric pattern */
+            background-repeat: repeat;
+        }
+        body.loaded {
+            opacity: 1; /* Fade in on load */
+        }
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+        .section {
+            background-color: #ffffff;
+            border-radius: 1.5rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            margin-bottom: 2rem;
+            padding: 2.5rem;
+            border: 1px solid #f0f0f0; /* Lighter border */
+            transition: all 0.3s ease-in-out; /* Smooth transition for section elements */
+        }
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 30px -5px rgba(0, 0, 0, 0.15), 0 12px 12px -5px rgba(0, 0, 0, 0.06);
+        }
+        .btn-primary {
+            background-color: #A52A2A; /* IndianRed - a deep maroon/red */
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none; /* Ensure buttons are not underlined if used as links */
+        }
+        .btn-primary:hover {
+            background-color: #8B0000; /* Darker red */
+            transform: translateY(-2px);
+        }
+        .btn-secondary {
+            background-color: #DAA520; /* Goldenrod - a rich gold */
+            color: #4B371C; /* Dark brown for text on gold */
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: 1px solid #B8860B; /* Darker goldenrod border */
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none; /* Ensure buttons are not underlined if used as links */
+        }
+        .btn-secondary:hover {
+            background-color: #B8860B; /* Darker goldenrod */
+            color: white;
+            transform: translateY(-2px);
+        }
+        .icon-link {
+            display: inline-flex;
+            align-items: center;
+            color: #2E8B57; /* SeaGreen - a nice dark green */
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+        .icon-link:hover {
+            color: #3CB371; /* MediumSeaGreen */
+        }
+        /* Mobile-optimized grid item for nearby attractions */
+        .grid-item {
+            background-color: #fcfcfc;
+            padding: 0.75rem 1rem; /* Slightly more horizontal padding */
+            border-radius: 0.75rem;
+            border: 1px solid #e0e0e0;
+            display: flex;
+            flex-direction: row; /* Horizontal layout */
+            align-items: center;
+            justify-content: space-between; /* Space out items */
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            font-size: 0.8rem;
+            min-height: 50px; /* Ensure a consistent height for rectangle shape */
+        }
+        .grid-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 12px -3px rgba(0, 0, 0, 0.08), 0 3px 5px -2px rgba(0, 0, 0, 0.03);
+        }
+        .grid-item i {
+            font-size: 1.25rem; /* Further reduced icon size for mobile */
+            color: #2E8B57;
+            margin-right: 0.75rem; /* Space between icon and text */
+            flex-shrink: 0; /* Prevent icon from shrinking */
+        }
+        .grid-item .place-info {
+            flex-grow: 1; /* Allow text to take available space */
+            text-align: left;
+            margin-right: 0.5rem; /* Space between text and map link */
+        }
+        .grid-item .place-info p {
+            margin-bottom: 0; /* Remove extra margin from paragraph */
+        }
+        .grid-item .map-link {
+            font-size: 0.7rem; /* Smaller map link text */
+            flex-shrink: 0; /* Prevent link from shrinking */
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 2.5rem;
+            border-radius: 1.5rem;
+            width: 90%;
+            max-width: 550px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.25), 0 6px 6px rgba(0,0,0,0.15);
+            text-align: center;
+            position: relative;
+        }
+        .close-button {
+            color: #888;
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.75rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close-button:hover,
+        .close-button:focus {
+            color: #555;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Specific styling for the Reception section to give it more weight */
+        .reception-section {
+            border-left: 8px solid #B8860B; /* Goldenrod left border */
+            background-color: #fefdf9; /* Slightly off-white for prominence */
+        }
+        .reception-section h2 {
+            color: #A52A2A; /* Stronger heading color */
+        }
+        .reception-intro {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            color: #4B371C; /* Dark brown */
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            font-style: italic;
+        }
+
+        /* Hero Section Specific Colors */
+        .hero-text-sub {
+            color: #8B4513; /* SaddleBrown */
+        }
+        .hero-text-main {
+            color: #A52A2A; /* IndianRed */
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2); /* Subtle shadow for names */
+        }
+        .hero-text-names {
+            color: #DAA520; /* Goldenrod */
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3); /* More pronounced shadow for names */
+            line-height: 1; /* Adjust line height for larger text */
+        }
+
+        /* Best Compliments Section Highlight */
+        .best-compliments-section {
+            font-size: 1.3rem; /* Slightly larger font size */
+            font-weight: 700; /* Bolder */
+            color: #4B371C; /* Dark brown for prominence */
+            padding: 0.75rem 1.5rem; /* Padding around the text */
+            border-radius: 1rem; /* Rounded corners */
+            background-color: #ffeccf; /* Very light gold/cream background */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); /* More prominent shadow */
+            border: 2px solid #DAA520; /* Gold border */
+            margin: 2rem auto; /* Center with margin, added more top margin */
+            display: inline-block; /* To contain background and border */
+            max-width: 90%; /* Max width for responsiveness */
+        }
+
+        /* Contact Info Styling */
+        .contact-info {
+            margin-top: 1.5rem;
+            font-size: 0.95rem;
+            color: #555;
+        }
+        .contact-info a {
+            color: #2E8B57; /* Green for links */
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        .contact-info a:hover {
+            color: #3CB371;
+            text-decoration: underline;
+        }
+
+        /* Loading Overlay */
+        #loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fdfaf6; /* Matches body background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease-out; /* Fade out effect */
+        }
+        #loading-overlay.hidden {
+            opacity: 0;
+            pointer-events: none; /* Allows clicks on content underneath once hidden */
+        }
+
+        /* Loading Logo Animation */
+        .loading-logo {
+            width: 100px; /* Size of the logo */
+            height: 100px;
+            animation: spin 2s linear infinite; /* Spin animation */
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        /* Styles for the SVG elements */
+        .ring-path {
+            fill: none;
+            stroke: #DAA520; /* Goldenrod color for rings */
+            stroke-width: 8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Overlay -->
+    <div id="loading-overlay">
+        <svg class="loading-logo" viewBox="0 0 100 100">
+            <!-- Intertwining Rings -->
+            <path class="ring-path" d="M 50,20 A 30,30 0 1,1 50,80 A 30,30 0 1,1 50,20 Z" />
+            <path class="ring-path" d="M 70,50 A 30,30 0 1,1 10,50 A 30,30 0 1,1 70,50 Z" style="transform: rotate(45deg) translate(20px, 0); transform-origin: center;" />
+            <!-- Simplified: A more abstract intertwined look or just two circles -->
+            <circle class="ring-path" cx="40" cy="50" r="30" />
+            <circle class="ring-path" cx="60" cy="50" r="30" />
+            <path class="ring-path" d="M60 50 A30 30 0 0 0 40 50 M40 50 A30 30 0 0 1 60 50" stroke-width="8" stroke="#fdfaf6" fill="none" /> <!-- Overlap cover -->
+
+            <!-- More abstract intertwining rings as SVG paths -->
+            <path class="ring-path" d="M 35 45 C 25 35, 25 65, 35 55 C 45 65, 45 35, 35 45" />
+            <path class="ring-path" d="M 65 55 C 75 65, 75 35, 65 45 C 55 35, 55 65, 65 55" />
+            <path class="ring-path" d="M 35 45 L 65 55" stroke-dasharray="100" stroke-dashoffset="100" style="stroke: #A52A2A; animation: draw 2s ease-out forwards; animation-delay: 0.5s;" />
+
+            <!-- Using a simpler, single set of rings for clarity -->
+            <circle cx="45" cy="50" r="25" class="ring-path" />
+            <circle cx="55" cy="50" r="25" class="ring-path" />
+            <!-- This path covers the overlapping part to give the intertwined effect -->
+            <path d="M55 25 A25 25 0 0 0 45 25 L45 25 A25 25 0 0 1 55 25 Z" fill="#fdfaf6" stroke="none" />
+             <!-- A simple two ring overlap with a cover for depth -->
+             <circle cx="40" cy="50" r="25" stroke="#DAA520" stroke-width="5" fill="none"/>
+             <circle cx="60" cy="50" r="25" stroke="#A52A2A" stroke-width="5" fill="none"/>
+             <!-- Overlap effect -->
+             <path d="M 40 75 A 25 25 0 0 1 60 75" stroke="#DAA520" stroke-width="5" fill="none" />
+             <path d="M 60 25 A 25 25 0 0 1 40 25" stroke="#A52A2A" stroke-width="5" fill="none" />
+        </svg>
+    </div>
+
+    <!-- Main content container -->
+    <div id="main-content">
+        <!-- Hero Section -->
+        <header class="text-center py-10 mb-8 w-full">
+            <h4 class="text-xl md:text-2xl font-light text-gray-700 mb-2 hero-text-sub">The joyous occasion of the</h4>
+            <h1 class="text-5xl md:text-7xl font-bold tracking-wider hero-text-main">Wedding Reception of</h1>
+            <h1 class="text-6xl md:text-8xl font-bold tracking-wider mt-2 hero-text-names">Viswajith & Niranjana</h1>
+            <h4 class="text-xl md:text-2xl font-light text-gray-700 mt-4 hero-text-sub">Join us in celebrating!</h4>
+        </header>
+
+        <main class="container">
+            <!-- Reception Details Section (Given more weightage) -->
+            <section class="section reception-section">
+                <h2 class="text-4xl font-bold text-center mb-6 text-red-700">Reception</h2>
+                <p class="reception-intro text-center">
+                    I Mrs. Dr. Kairali Dileep, Ashtapathi House, Chottanikkara, Thazhakkal Family, Ernakulam, <br>
+                    request the honour of your gracious presence & blessings on the auspicious occasion of my son’s Marriage Reception.
+                </p>
+                <div class="text-center mb-8">
+                    <p class="text-lg md:text-xl text-gray-700 mb-2">
+                        <i class="fas fa-calendar-alt text-red-700 mr-2"></i> Wednesday, 27th August 2025
+                    </p>
+                    <p class="text-lg md:text-xl text-gray-700 mb-4">
+                        <i class="fas fa-clock text-red-700 mr-2"></i> 6:00 PM - 9:00 PM
+                    </p>
+                    <p class="text-lg md:text-xl text-gray-700">
+                        <i class="fas fa-map-marker-alt text-red-700 mr-2"></i> SGP Hall, Thiruvankulam, Kochi
+                    </p>
+                    <a href="https://maps.app.goo.gl/RiVvpVF2u7eCCMBQ6" target="_blank" class="icon-link mt-2 inline-block">
+                        <i class="fas fa-external-link-alt text-green-700 mr-1"></i> View on Google Maps
+                    </a>
+                </div>
+
+                <h3 class="text-2xl font-semibold text-center mb-4 text-brown-700">Nearby Attractions from Reception Hall</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                    <div class="grid-item">
+                        <i class="fas fa-university"></i>
+                        <div class="place-info">
+                            <p class="font-semibold">Hill Palace Museum <span class="text-xs text-gray-600">(1.5 km)</span></p>
+                        </div>
+                        <a href="https://maps.app.goo.gl/dxfP3kUvrLCca8zBA" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
+                    </div>
+                    <div class="grid-item">
+                        <i class="fas fa-gopuram"></i>
+                        <div class="place-info">
+                            <p class="font-semibold">Chottanikkara Bhagavathy Temple <span class="text-xs text-gray-600">(3.4 km)</span></p>
+                        </div>
+                        <a href="https://maps.app.goo.gl/b2Qa5Lp9UJxup5yXA" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
+                    </div>
+                    <div class="grid-item">
+                        <i class="fas fa-train"></i>
+                        <div class="place-info">
+                            <p class="font-semibold">Thrippunithura Railway Station (TRTR) <span class="text-xs text-gray-600">(3.1 km)</span></p>
+                        </div>
+                        <a href="https://maps.app.goo.gl/hwJzdJerChhv5NZVA" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
+                    </div>
+                    <div class="grid-item">
+                        <i class="fas fa-subway"></i>
+                        <div class="place-info">
+                            <p class="font-semibold">Thripunithura Terminal Metro Station <span class="text-xs text-gray-600">(3.2 km)</span></p>
+                        </div>
+                        <a href="https://maps.app.goo.gl/c4s1m3hMn85WHunW9" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
+                    </div>
+                    <div class="grid-item">
+                        <i class="fas fa-dove"></i>
+                        <div class="place-info">
+                            <p class="font-semibold">Mangalavanam Bird Sanctuary <span class="text-xs text-gray-600">(15 km)</span></p>
+                        </div>
+                        <a href="https://maps.app.goo.gl/Ci2zZUALW5aZEgc97" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
+                    </div>
+                    <div class="grid-item">
+                        <i class="fas fa-water"></i>
+                        <div class="place-info">
+                            <p class="font-semibold">Marine Viewpoint <span class="text-xs text-gray-600">(13 km)</span></p>
+                        </div>
+                        <a href="https://maps.app.goo.gl/BbLWSK7w58pqHCdR7" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
+                    </div>
+                    <div class="grid-item">
+                        <i class="fas fa-train"></i>
+                        <div class="place-info">
+                            <p class="font-semibold">Ernakulam Jn Railway Station <span class="text-xs text-gray-600">(11.5 km)</span></p>
+                        </div>
+                        <a href="https://maps.app.goo.gl/GroNx9gSm97nMrVo9" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
+                    </div>
+                    <div class="grid-item">
+                        <i class="fas fa-monument"></i>
+                        <div class="place-info">
+                            <p class="font-semibold">Vasco da Gama Square <span class="text-xs text-gray-600">(21 km)</span></p>
+                        </div>
+                        <a href="https://maps.app.goo.gl/hjDePcLXggzZNa1y7" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
+                    </div>
+                    <div class="grid-item">
+                        <i class="fas fa-plane"></i>
+                        <div class="place-info">
+                            <p class="font-semibold">Cochin International Airport (COK) <span class="text-xs text-gray-600">(33 km)</span></p>
+                        </div>
+                        <a href="https://maps.app.goo.gl/vMSETDdtKFZtWqyS6" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Wedding Details Section -->
+            <section class="section">
+                <h2 class="text-4xl font-bold text-center mb-6 text-red-700">The Wedding Ceremony</h2>
+                <div class="text-center mb-8">
+                    <p class="text-lg md:text-xl text-gray-700 mb-2">
+                        <i class="fas fa-calendar-alt text-red-700 mr-2"></i> Monday, 25th August 2025
+                    </p>
+                    <p class="text-lg md:text-xl text-gray-700 mb-4">
+                        <i class="fas fa-clock text-red-700 mr-2"></i> Muhurtham: 11:00 AM - 11:40 AM
+                    </p>
+                    <p class="text-lg md:text-xl text-gray-700">
+                        <i class="fas fa-map-marker-alt text-red-700 mr-2"></i> Lalith Mahal Kalyana Mandapam, West Fort, Trivandrum
+                    </p>
+                    <a href="https://maps.app.goo.gl/sDXLrUbBY6ens6vF9" target="_blank" class="icon-link mt-2 inline-block">
+                        <i class="fas fa-external-link-alt text-green-700 mr-1"></i> View on Google Maps
+                    </a>
+                </div>
+
+                <h3 class="text-2xl font-semibold text-center mb-4 text-brown-700">Nearby Attractions from Marriage Hall</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                    <div class="grid-item">
+                        <i class="fas fa-church"></i>
+                        <div class="place-info">
+                            <p class="font-semibold">Padmanabhaswamy Temple <span class="text-xs text-gray-600">(350 m)</span></p>
+                        </div>
+                        <a href="https://g.co/kgs/csyC773" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
+                    </div>
+                    <div class="grid-item">
+                        <i class="fas fa-mask"></i>
+                        <div class="place-info">
+                            <p class="font-semibold">Sunil’s Wax Museum <span class="text-xs text-gray-600">(800 m)</span></p>
+                        </div>
+                        <a href="https://g.co/kgs/43DwBDH" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
+                    </div>
+                    <div class="grid-item">
+                        <i class="fas fa-landmark"></i>
+                        <div class="place-info">
+                            <p class="font-semibold">Kuthiramalika Palace <span class="text-xs text-gray-600">(850 m)</span></p>
+                        </div>
+                        <a href="https://maps.app.goo.gl/poT88mU9nP8Tcsed6" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
+                    </div>
+                    <div class="grid-item">
+                        <i class="fas fa-train"></i>
+                        <div class="place-info">
+                            <p class="font-semibold">Trivandrum Railway Station(TVC) <span class="text-xs text-gray-600">(2.3 km)</span></p>
+                        </div>
+                        <a href="https://maps.app.goo.gl/et8rn4243F4uX2qN7" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
+                    </div>
+                    <div class="grid-item">
+                        <i class="fas fa-paw"></i>
+                        <div class="place-info">
+                            <p class="font-semibold">Zoo <span class="text-xs text-gray-600">(4.2 km)</span></p>
+                        </div>
+                        <a href="https://maps.app.goo.gl/rYZUSvdrPRNxKSvJ7" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
+                    </div>
+                    <div class="grid-item">
+                        <i class="fas fa-plane"></i>
+                        <div class="place-info">
+                            <p class="font-semibold">Trivandrum International Airport (TRV) <span class="text-xs text-gray-600">(5.3 km)</span></p>
+                        </div>
+                        <a href="https://maps.app.goo.gl/zmJgvWKTEFsf2vDG6" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
+                    </div>
+                    <div class="grid-item">
+                        <i class="fas fa-building"></i>
+                        <div class="place-info">
+                            <p class="font-semibold">Kanakakunnu Palace <span class="text-xs text-gray-600">(4.5 km)</span></p>
+                        </div>
+                        <a href="https://maps.app.goo.gl/SJfojcrqnLXrB6LCA" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
+                    </div>
+                    <div class="grid-item">
+                        <i class="fas fa-ship"></i>
+                        <div class="place-info">
+                            <p class="font-semibold">Veli Tourist Village <span class="text-xs text-gray-600">(8.2 km)</span></p>
+                        </div>
+                        <a href="https://maps.app.goo.gl/17B2Jz9TFCsUMZG38" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
+                    </div>
+                    <div class="grid-item">
+                        <i class="fas fa-mountain"></i>
+                        <div class="place-info">
+                            <p class="font-semibold">Varkala Cliff <span class="text-xs text-gray-600">(45 km)</span></p>
+                        </div>
+                        <a href="https://maps.app.goo.gl/biX1ER2Ti45PbMhs5" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- RSVP Section -->
+            <section class="section text-center">
+                <h2 class="text-4xl font-bold mb-6 text-brown-800">Will you join us?</h2>
+                <p class="text-lg text-gray-700 mb-6">Please let us know which event(s) you'll be attending so we can make arrangements.</p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <button id="rsvpWeddingBtn" class="btn-primary text-xl"><i class="fas fa-ring mr-2"></i> Attending Wedding</button>
+                    <button id="rsvpReceptionBtn" class="btn-primary text-xl"><i class="fas fa-cocktail mr-2"></i> Attending Reception</button>
+                    <button id="rsvpBothBtn" class="btn-primary text-xl"><i class="fas fa-heart mr-2"></i> Attending Both</button>
+                </div>
+                <p class="text-md text-gray-600 mt-6">
+                    Click on the buttons above to add the event(s) to your calendar, so you won't miss out on these auspicious occasions!
+                </p>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="text-center text-gray-600 py-6 mt-8 w-full">
+            <p class="text-brown-700 font-semibold best-compliments-section">With Best Compliments from<br>Abhijith D & Nithya Abhijith</p>
+            <p class="contact-info">In case of any queries, feel free to reach out to:</p>
+            <p class="contact-info">
+                Aswin KA: <a href="tel:+919895500618">98955 00618</a> |
+                Maneesh: <a href="tel:+919995881168">99958 81168</a>
+            </p>
+        </footer>
+    </div> <!-- End of #main-content -->
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal('successModal')">&times;</span>
+            <p class="text-2xl font-bold mb-4 text-green-600"><i class="fas fa-check-circle mr-2"></i> Success!</p>
+            <p id="modalMessage" class="text-lg text-gray-700 mb-6"></p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a id="googleCalLink" href="#" target="_blank" class="btn-primary flex items-center text-base"><i class="fab fa-google mr-2"></i> Add to Google Calendar</a>
+                <a id="icsCalLink" href="#" class="btn-secondary flex items-center text-base"><i class="fas fa-calendar-plus mr-2"></i> Download ICS File</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Error Modal -->
+    <div id="errorModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal('errorModal')">&times;</span>
+            <p class="text-2xl font-bold mb-4 text-red-600"><i class="fas fa-exclamation-triangle mr-2"></i> Error</p>
+            <p id="errorMessage" class="text-lg text-gray-700">Something went wrong. Please try again or contact the organizers.</p>
+            <button onclick="closeModal('errorModal')" class="btn-primary mt-6">Close</button>
+        </div>
+    </div>
+
+    <script>
+        // Data for events and nearby places
+        const events = {
+            wedding: {
+                title: "Viswajith & Niranjana Wedding Ceremony",
+                date: "2025-08-25",
+                startTime: "11:00",
+                endTime: "11:40",
+                location: "Lalith Mahal Kalyana Mandapam, West Fort, Trivandrum",
+                mapLink: "https://maps.app.goo.gl/sDXLrUbBY6ens6vF9",
+                description: "We request the honor of your gracious presence and blessings on the auspicious occasion of our son's marriage.",
+                nearbyPlaces: [
+                    { name: "Padmanabhaswamy Temple", distance: "350 m", map: "https://g.co/kgs/csyC773" },
+                    { name: "Sunil's Wax Museum", distance: "800 m", map: "https://g.co/kgs/43DwBDH" },
+                    { name: "Kuthiramalika Palace", distance: "850 m", map: "https://maps.app.goo.gl/poT88mU9nP8Tcsed6" },
+                    { name: "Trivandrum Railway Station(TVC)", distance: "2.3 km", map: "https://maps.app.goo.gl/et8rn4243F4uX2qN7" },
+                    { name: "Zoo", distance: "4.2 km", map: "https://maps.app.goo.gl/rYZUSvdrPRNxKSvJ7" },
+                    { name: "Trivandrum International Airport (TRV)", distance: "5.3 km", map: "https://maps.app.goo.gl/zmJgvWKTEFsf2vDG6" },
+                    { name: "Kanakakunnu Palace", distance: "4.5 km", map: "https://maps.app.goo.gl/SJfojcrqnLXrB6LCA" },
+                    { name: "Veli Tourist Village", distance: "8.2 km", map: "https://maps.app.goo.gl/17B2Jz9TFCsUMZG38" },
+                    { name: "Varkala Cliff", distance: "45 km", map: "https://maps.app.goo.gl/biX1ER2Ti45PbMhs5" }
+                ]
+            },
+            reception: {
+                title: "Viswajith & Niranjana Wedding Reception",
+                date: "2025-08-27",
+                startTime: "18:00", // 6:00 PM
+                endTime: "21:00",   // 9:00 PM
+                location: "SGP Hall, Thiruvankulam, Kochi",
+                mapLink: "https://maps.app.goo.gl/RiVvpVF2u7eCCMBQ6",
+                description: "I Mrs. Dr. Kairali Dileep, Ashtapathi House, Chottanikkara, Thazhakkal Family, Ernakulam, request the honour of your gracious presence & blessings on the auspicious occasion of my son’s Marriage Reception.",
+                nearbyPlaces: [
+                    { name: "Hill Palace Museum", distance: "1.5 km", map: "https://maps.app.goo.gl/dxfP3kUvrLCca8zBA" },
+                    { name: "Chottanikkara Bhagavathy Temple", distance: "3.4 km", map: "https://maps.app.goo.gl/b2Qa5Lp9UJxup5yXA" },
+                    { name: "Thrippunithura Railway Station (TRTR)", distance: "3.1 km", map: "https://maps.app.goo.gl/hwJzdJerChhv5NZVA" },
+                    { name: "Thripunithura Terminal Metro Station", distance: "3.2 km", map: "https://maps.app.goo.gl/c4s1m3hMn85WHunW9" },
+                    { name: "Mangalavanam Bird Sanctuary", distance: "15 km", map: "https://maps.app.goo.gl/Ci2zZUALW5aZEgc97" },
+                    { name: "Marine Viewpoint", distance: "13 km", map: "https://maps.app.goo.gl/BbLWSK7w58pqHCdR7" },
+                    { name: "Ernakulam Jn Railway Station", distance: "11.5 km", map: "https://maps.app.goo.gl/GroNx9gSm97nMrVo9" },
+                    { name: "Vasco da Gama Square", distance: "21 km", map: "https://maps.app.goo.gl/hjDePcLXggzZNa1y7" },
+                    { name: "Cochin International Airport (COK)", distance: "33 km", map: "https://maps.app.goo.gl/vMSETDdtKFZtWqyS6" }
+                ]
+            }
+        };
+
+        // Get modal elements
+        const successModal = document.getElementById('successModal');
+        const errorModal = document.getElementById('errorModal');
+        const modalMessage = document.getElementById('modalMessage');
+        const errorMessage = document.getElementById('errorMessage');
+        const googleCalLink = document.getElementById('googleCalLink');
+        const icsCalLink = document.getElementById('icsCalLink');
+        const loadingOverlay = document.getElementById('loading-overlay');
+        const mainContent = document.getElementById('main-content');
+
+        /**
+         * Shows the specified modal.
+         * @param {string} modalId - The ID of the modal to show ('successModal' or 'errorModal').
+         * @param {string} message - The message to display in the modal.
+         * @param {object} [eventData] - Event data for calendar links (only for success modal).
+         * @param {string} [eventType] - 'wedding', 'reception', or 'both'
+         */
+        function showModal(modalId, message, eventData = null, eventType = '') {
+            if (modalId === 'successModal') {
+                modalMessage.textContent = message;
+                successModal.classList.remove('hidden');
+                // Generate calendar links if eventData is provided
+                if (eventData) {
+                    googleCalLink.href = generateGoogleCalendarLink(eventData, eventType);
+                    icsCalLink.href = generateICSFile(eventData, eventType);
+                } else {
+                    googleCalLink.href = "#"; // Disable if no event data
+                    icsCalLink.href = "#"; // Disable if no event data
+                }
+            } else if (modalId === 'errorModal') {
+                errorMessage.textContent = message;
+                errorModal.classList.remove('hidden');
+            }
+        }
+
+        /**
+         * Hides the specified modal.
+         * @param {string} modalId - The ID of the modal to hide.
+         */
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.add('hidden');
+        }
+
+        /**
+         * Formats a date and time into a Google Calendar friendly format (YYYYMMDDTHHMMSSZ).
+         * @param {string} dateStr - Date string (YYYY-MM-DD).
+         * @param {string} timeStr - Time string (HH:MM).
+         * @returns {string} Formatted datetime string.
+         */
+        function formatDateTimeForGoogle(dateStr, timeStr) {
+            const [year, month, day] = dateStr.split('-');
+            const [hour, minute] = timeStr.split(':');
+            const dt = new Date(`${dateStr}T${timeStr}:00`);
+            const pad = (num) => num.toString().padStart(2, '0');
+            return `${dt.getFullYear()}${pad(dt.getMonth() + 1)}${pad(dt.getDate())}T${pad(dt.getHours())}${pad(dt.getMinutes())}${pad(dt.getSeconds())}`;
+        }
+
+        /**
+         * Generates nearby places description for calendar events.
+         * @param {Array<Object>} places - Array of nearby place objects.
+         * @param {string} venueName - Name of the venue.
+         * @returns {string} Formatted string of nearby places.
+         */
+        function getNearbyPlacesDescription(places, venueName) {
+            if (!places || places.length === 0) return "";
+            let description = `\\n\\nYou can also explore nearby places around ${venueName}:\\n`;
+            places.forEach(place => {
+                description += `- ${place.name} (${place.distance} from ${venueName})\\n`;
+            });
+            return description;
+        }
+
+        /**
+         * Generates a Google Calendar link.
+         * @param {object} data - Event data (title, date, startTime, endTime, location, description, nearbyPlaces).
+         * @param {string} eventType - 'wedding', 'reception', or 'both'.
+         * @returns {string} Google Calendar URL.
+         */
+        function generateGoogleCalendarLink(data, eventType) {
+            let desc = data.description;
+            if (eventType === 'wedding' || eventType === 'both') {
+                desc += getNearbyPlacesDescription(events.wedding.nearbyPlaces, events.wedding.location.split(',')[0]);
+            }
+            if (eventType === 'reception' || eventType === 'both') {
+                 desc += getNearbyPlacesDescription(events.reception.nearbyPlaces, events.reception.location.split(',')[0]);
+            }
+
+            const startDate = formatDateTimeForGoogle(data.date, data.startTime);
+            const endDate = formatDateTimeForGoogle(data.date, data.endTime);
+            const encodedTitle = encodeURIComponent(data.title);
+            const encodedLocation = encodeURIComponent(data.location);
+            const encodedDescription = encodeURIComponent(desc);
+
+            const baseUrl = "https://calendar.google.com/calendar/render?action=TEMPLATE";
+            const params = `text=${encodedTitle}&dates=${startDate}/${endDate}&details=${encodedDescription}&location=${encodedLocation}&sf=true&output=xml`;
+            return `${baseUrl}&${params}`;
+        }
+
+        /**
+         * Generates an ICS file content.
+         * @param {object} data - Event data (title, date, startTime, endTime, location, description, nearbyPlaces).
+         * @param {string} eventType - 'wedding', 'reception', or 'both'.
+         * @returns {string} Data URI for ICS file.
+         */
+        function generateICSFile(data, eventType) {
+            const startDate = new Date(`${data.date}T${data.startTime}:00`);
+            const endDate = new Date(`${data.date}T${data.endTime}:00`);
+
+            // Format dates for ICS (YYYYMMDDTHHMMSS)
+            const formatICSDate = (dt) => {
+                const pad = (num) => num.toString().padStart(2, '0');
+                return `${dt.getFullYear()}${pad(dt.getMonth() + 1)}${pad(dt.getDate())}T${pad(dt.getHours())}${pad(dt.getMinutes())}${pad(dt.getSeconds())}`;
+            };
+
+            let descriptionText = data.description;
+            if (eventType === 'wedding' || eventType === 'both') {
+                descriptionText += getNearbyPlacesDescription(events.wedding.nearbyPlaces, events.wedding.location.split(',')[0]);
+            }
+            if (eventType === 'reception' || eventType === 'both') {
+                 descriptionText += getNearbyPlacesDescription(events.reception.nearbyPlaces, events.reception.location.split(',')[0]);
+            }
+
+            // Reminders (VALARM) - 1 week, 3 days, same day
+            const now = new Date();
+            const uid = `${Math.random().toString(36).substring(2, 15)}@yourdomain.com`; // Unique ID for the event
+
+            const icsContent = `BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Viswajith & Niranjana Wedding//NONSGML v1.0//EN
+BEGIN:VEVENT
+UID:${uid}
+DTSTAMP:${formatICSDate(now)}Z
+DTSTART:${formatICSDate(startDate)}
+DTEND:${formatICSDate(endDate)}
+SUMMARY:${data.title}
+LOCATION:${data.location}
+DESCRIPTION:${descriptionText.replace(/\n/g, '\\n')}
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Reminder: ${data.title} is in 1 week!
+TRIGGER;RELATED=START:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Reminder: ${data.title} is in 3 days!
+TRIGGER;RELATED=START:-P3D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Reminder: ${data.title} is today!
+TRIGGER;RELATED=START:-PT0M
+END:VALARM
+END:VEVENT
+END:VCALENDAR`;
+
+            return `data:text/calendar;charset=utf8,${encodeURIComponent(icsContent)}`;
+        }
+
+        // Event Listeners for RSVP buttons
+        document.getElementById('rsvpWeddingBtn').addEventListener('click', () => {
+            showModal('successModal', 'Great! We\'ve prepared the calendar event for your wedding attendance.', events.wedding, 'wedding');
+        });
+
+        document.getElementById('rsvpReceptionBtn').addEventListener('click', () => {
+            showModal('successModal', 'Wonderful! We\'ve prepared the calendar event for your reception attendance.', events.reception, 'reception');
+        });
+
+        document.getElementById('rsvpBothBtn').addEventListener('click', () => {
+            // Modify modal message to indicate two events
+            modalMessage.innerHTML = `Excellent! We've prepared calendar events for both the wedding and reception.<br><br>
+                                     You can add the wedding to your calendar: <a id="googleCalWeddingLink" href="#" target="_blank" class="btn-primary inline-flex items-center text-sm mr-2 mt-2"><i class="fab fa-google mr-1"></i> Google Cal</a>
+                                     <a id="icsCalWeddingLink" href="#" class="btn-secondary inline-flex items-center text-sm mt-2"><i class="fas fa-calendar-plus mr-1"></i> Download ICS (Wedding)</a>
+                                     <br><br>
+                                     And the reception: <a id="googleCalReceptionLink" href="#" target="_blank" class="btn-primary inline-flex items-center text-sm mr-2 mt-2"><i class="fab fa-google mr-1"></i> Google Cal</a>
+                                     <a id="icsCalReceptionLink" href="#" class="btn-secondary inline-flex items-center text-sm mt-2"><i class="fas fa-calendar-plus mr-1"></i> Download ICS (Reception)</a>`;
+
+            successModal.classList.remove('hidden');
+
+            // Set specific links for "both" option
+            document.getElementById('googleCalWeddingLink').href = generateGoogleCalendarLink(events.wedding, 'wedding');
+            document.getElementById('icsCalWeddingLink').href = generateICSFile(events.wedding, 'wedding');
+
+            document.getElementById('googleCalReceptionLink').href = generateGoogleCalendarLink(events.reception, 'reception');
+            document.getElementById('icsCalReceptionLink').href = generateICSFile(events.reception, 'reception');
+
+            // Hide the default singular buttons in the modal if "both" is clicked
+            googleCalLink.style.display = 'none';
+            icsCalLink.style.display = 'none';
+        });
+
+        // Event listener to reset modal buttons when it's closed, ensuring correct display for next click
+        successModal.addEventListener('transitionend', () => {
+            if (successModal.classList.contains('hidden')) {
+                googleCalLink.style.display = 'inline-flex';
+                icsCalLink.style.display = 'inline-flex';
+            }
+        });
+
+        // Handle page load for preloader and content fade-in
+        window.onload = function() {
+            // Fade out the loading overlay
+            loadingOverlay.style.opacity = '0';
+            setTimeout(() => {
+                loadingOverlay.classList.add('hidden');
+                // Make body visible after overlay is hidden
+                document.body.classList.add('loaded');
+            }, 500); // Wait for fade-out transition to complete
+        };
+    </script>
+</body>
+</html>
