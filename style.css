@@ -88,32 +88,41 @@
         .icon-link:hover {
             color: #3CB371; /* MediumSeaGreen */
         }
+        /* Mobile-optimized grid item for nearby attractions */
         .grid-item {
-            background-color: #fcfcfc; /* Lighter background for grid items */
-            padding: 0.75rem; /* Further reduced padding */
+            background-color: #fcfcfc;
+            padding: 0.75rem 1rem; /* Slightly more horizontal padding */
             border-radius: 0.75rem;
             border: 1px solid #e0e0e0;
             display: flex;
-            flex-direction: column;
+            flex-direction: row; /* Horizontal layout */
             align-items: center;
-            text-align: center;
+            justify-content: space-between; /* Space out items */
             transition: transform 0.2s ease, box-shadow 0.2s ease;
-            font-size: 0.8rem; /* Smaller font size */
+            font-size: 0.8rem;
+            min-height: 50px; /* Ensure a consistent height for rectangle shape */
         }
         .grid-item:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 12px -3px rgba(0, 0, 0, 0.08), 0 3px 5px -2px rgba(0, 0, 0, 0.03);
         }
         .grid-item i {
-            font-size: 1.5rem; /* Reduced icon size for mobile */
-            color: #2E8B57; /* Green icon color */
-            margin-bottom: 0.4rem; /* Reduced margin */
+            font-size: 1.25rem; /* Further reduced icon size for mobile */
+            color: #2E8B57;
+            margin-right: 0.75rem; /* Space between icon and text */
+            flex-shrink: 0; /* Prevent icon from shrinking */
         }
-        .grid-item p {
-            margin-bottom: 0.1rem; /* Reduced margin */
+        .grid-item .place-info {
+            flex-grow: 1; /* Allow text to take available space */
+            text-align: left;
+            margin-right: 0.5rem; /* Space between text and map link */
         }
-        .grid-item a {
-            font-size: 0.65rem; /* Even smaller link text */
+        .grid-item .place-info p {
+            margin-bottom: 0; /* Remove extra margin from paragraph */
+        }
+        .grid-item .map-link {
+            font-size: 0.7rem; /* Smaller map link text */
+            flex-shrink: 0; /* Prevent link from shrinking */
         }
         .modal {
             display: none;
@@ -197,6 +206,23 @@
             margin-top: 1rem;
             display: inline-block; /* To make border-top apply correctly */
         }
+
+        /* Contact Info Styling */
+        .contact-info {
+            margin-top: 1.5rem;
+            font-size: 0.95rem;
+            color: #555;
+        }
+        .contact-info a {
+            color: #2E8B57; /* Green for links */
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        .contact-info a:hover {
+            color: #3CB371;
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body class="bg-gradient-to-r from-purple-100 via-pink-100 to-indigo-100 min-h-screen flex flex-col justify-center items-center py-10">
@@ -233,60 +259,69 @@
             </div>
 
             <h3 class="text-2xl font-semibold text-center mb-4 text-brown-700">Nearby Attractions from Reception Hall</h3>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3"> <!-- Further reduced gap -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                 <div class="grid-item">
                     <i class="fas fa-university"></i>
-                    <p class="font-semibold">Hill Palace Museum</p>
-                    <p class="text-xs text-gray-600">1.5 km</p>
-                    <a href="https://maps.app.goo.gl/dxfP3kUvrLCca8zBA" target="_blank" class="icon-link mt-1 text-xs"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
+                    <div class="place-info">
+                        <p class="font-semibold">Hill Palace Museum <span class="text-xs text-gray-600">(1.5 km)</span></p>
+                    </div>
+                    <a href="https://maps.app.goo.gl/dxfP3kUvrLCca8zBA" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
                 </div>
                 <div class="grid-item">
                     <i class="fas fa-gopuram"></i>
-                    <p class="font-semibold">Chottanikkara Bhagavathy Temple</p>
-                    <p class="text-xs text-gray-600">3.4 km</p>
-                    <a href="https://maps.app.goo.gl/b2Qa5Lp9UJxup5yXA" target="_blank" class="icon-link mt-1 text-xs"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
+                    <div class="place-info">
+                        <p class="font-semibold">Chottanikkara Bhagavathy Temple <span class="text-xs text-gray-600">(3.4 km)</span></p>
+                    </div>
+                    <a href="https://maps.app.goo.gl/b2Qa5Lp9UJxup5yXA" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
                 </div>
                 <div class="grid-item">
                     <i class="fas fa-train"></i>
-                    <p class="font-semibold">Thrippunithura Railway Station (TRTR)</p>
-                    <p class="text-xs text-gray-600">3.1 km</p>
-                    <a href="https://maps.app.goo.gl/hwJzdJerChhv5NZVA" target="_blank" class="icon-link mt-1 text-xs"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
+                    <div class="place-info">
+                        <p class="font-semibold">Thrippunithura Railway Station (TRTR) <span class="text-xs text-gray-600">(3.1 km)</span></p>
+                    </div>
+                    <a href="https://maps.app.goo.gl/hwJzdJerChhv5NZVA" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
                 </div>
                 <div class="grid-item">
                     <i class="fas fa-subway"></i>
-                    <p class="font-semibold">Thripunithura Terminal Metro Station</p>
-                    <p class="text-xs text-gray-600">3.2 km</p>
-                    <a href="https://maps.app.goo.gl/c4s1m3hMn85WHunW9" target="_blank" class="icon-link mt-1 text-xs"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
+                    <div class="place-info">
+                        <p class="font-semibold">Thripunithura Terminal Metro Station <span class="text-xs text-gray-600">(3.2 km)</span></p>
+                    </div>
+                    <a href="https://maps.app.goo.gl/c4s1m3hMn85WHunW9" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
                 </div>
                 <div class="grid-item">
                     <i class="fas fa-dove"></i>
-                    <p class="font-semibold">Mangalavanam Bird Sanctuary</p>
-                    <p class="text-xs text-gray-600">15 km</p>
-                    <a href="https://maps.app.goo.gl/Ci2zZUALW5aZEgc97" target="_blank" class="icon-link mt-1 text-xs"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
+                    <div class="place-info">
+                        <p class="font-semibold">Mangalavanam Bird Sanctuary <span class="text-xs text-gray-600">(15 km)</span></p>
+                    </div>
+                    <a href="https://maps.app.goo.gl/Ci2zZUALW5aZEgc97" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
                 </div>
                 <div class="grid-item">
                     <i class="fas fa-water"></i>
-                    <p class="font-semibold">Marine Viewpoint</p>
-                    <p class="text-xs text-gray-600">13 km</p>
-                    <a href="https://maps.app.goo.gl/BbLWSK7w58pqHCdR7" target="_blank" class="icon-link mt-1 text-xs"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
+                    <div class="place-info">
+                        <p class="font-semibold">Marine Viewpoint <span class="text-xs text-gray-600">(13 km)</span></p>
+                    </div>
+                    <a href="https://maps.app.goo.gl/BbLWSK7w58pqHCdR7" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
                 </div>
                 <div class="grid-item">
                     <i class="fas fa-train"></i>
-                    <p class="font-semibold">Ernakulam Jn Railway Station</p>
-                    <p class="text-xs text-gray-600">11.5 km</p>
-                    <a href="https://maps.app.goo.gl/GroNx9gSm97nMrVo9" target="_blank" class="icon-link mt-1 text-xs"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
+                    <div class="place-info">
+                        <p class="font-semibold">Ernakulam Jn Railway Station <span class="text-xs text-gray-600">(11.5 km)</span></p>
+                    </div>
+                    <a href="https://maps.app.goo.gl/GroNx9gSm97nMrVo9" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
                 </div>
                 <div class="grid-item">
                     <i class="fas fa-monument"></i>
-                    <p class="font-semibold">Vasco da Gama Square</p>
-                    <p class="text-xs text-gray-600">21 km</p>
-                    <a href="https://maps.app.goo.gl/hjDePcLXggzZNa1y7" target="_blank" class="icon-link mt-1 text-xs"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
+                    <div class="place-info">
+                        <p class="font-semibold">Vasco da Gama Square <span class="text-xs text-gray-600">(21 km)</span></p>
+                    </div>
+                    <a href="https://maps.app.goo.gl/hjDePcLXggzZNa1y7" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
                 </div>
                 <div class="grid-item">
                     <i class="fas fa-plane"></i>
-                    <p class="font-semibold">Cochin International Airport (COK)</p>
-                    <p class="text-xs text-gray-600">33 km</p>
-                    <a href="https://maps.app.goo.gl/vMSETDdtKFZtWqyS6" target="_blank" class="icon-link mt-1 text-xs"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
+                    <div class="place-info">
+                        <p class="font-semibold">Cochin International Airport (COK) <span class="text-xs text-gray-600">(33 km)</span></p>
+                    </div>
+                    <a href="https://maps.app.goo.gl/vMSETDdtKFZtWqyS6" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
                 </div>
             </div>
         </section>
@@ -310,60 +345,69 @@
             </div>
 
             <h3 class="text-2xl font-semibold text-center mb-4 text-brown-700">Nearby Attractions from Marriage Hall</h3>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3"> <!-- Further reduced gap -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                 <div class="grid-item">
                     <i class="fas fa-church"></i>
-                    <p class="font-semibold">Padmanabhaswamy Temple</p>
-                    <p class="text-xs text-gray-600">350 m</p>
-                    <a href="https://g.co/kgs/csyC773" target="_blank" class="icon-link mt-1 text-xs"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
+                    <div class="place-info">
+                        <p class="font-semibold">Padmanabhaswamy Temple <span class="text-xs text-gray-600">(350 m)</span></p>
+                    </div>
+                    <a href="https://g.co/kgs/csyC773" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
                 </div>
                 <div class="grid-item">
                     <i class="fas fa-mask"></i>
-                    <p class="font-semibold">Sunil’s Wax Museum</p>
-                    <p class="text-xs text-gray-600">800 m</p>
-                    <a href="https://g.co/kgs/43DwBDH" target="_blank" class="icon-link mt-1 text-xs"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
+                    <div class="place-info">
+                        <p class="font-semibold">Sunil’s Wax Museum <span class="text-xs text-gray-600">(800 m)</span></p>
+                    </div>
+                    <a href="https://g.co/kgs/43DwBDH" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
                 </div>
                 <div class="grid-item">
                     <i class="fas fa-landmark"></i>
-                    <p class="font-semibold">Kuthiramalika Palace</p>
-                    <p class="text-xs text-gray-600">850 m</p>
-                    <a href="https://maps.app.goo.gl/poT88mU9nP8Tcsed6" target="_blank" class="icon-link mt-1 text-xs"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
+                    <div class="place-info">
+                        <p class="font-semibold">Kuthiramalika Palace <span class="text-xs text-gray-600">(850 m)</span></p>
+                    </div>
+                    <a href="https://maps.app.goo.gl/poT88mU9nP8Tcsed6" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
                 </div>
                 <div class="grid-item">
                     <i class="fas fa-train"></i>
-                    <p class="font-semibold">Trivandrum Railway Station(TVC)</p>
-                    <p class="text-xs text-gray-600">2.3 km</p>
-                    <a href="https://maps.app.goo.gl/et8rn4243F4uX2qN7" target="_blank" class="icon-link mt-1 text-xs"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
+                    <div class="place-info">
+                        <p class="font-semibold">Trivandrum Railway Station(TVC) <span class="text-xs text-gray-600">(2.3 km)</span></p>
+                    </div>
+                    <a href="https://maps.app.goo.gl/et8rn4243F4uX2qN7" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
                 </div>
                 <div class="grid-item">
                     <i class="fas fa-paw"></i>
-                    <p class="font-semibold">Zoo</p>
-                    <p class="text-xs text-gray-600">4.2 km</p>
-                    <a href="https://maps.app.goo.gl/rYZUSvdrPRNxKSvJ7" target="_blank" class="icon-link mt-1 text-xs"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
+                    <div class="place-info">
+                        <p class="font-semibold">Zoo <span class="text-xs text-gray-600">(4.2 km)</span></p>
+                    </div>
+                    <a href="https://maps.app.goo.gl/rYZUSvdrPRNxKSvJ7" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
                 </div>
                 <div class="grid-item">
                     <i class="fas fa-plane"></i>
-                    <p class="font-semibold">Trivandrum International Airport (TRV)</p>
-                    <p class="text-xs text-gray-600">5.3 km</p>
-                    <a href="https://maps.app.goo.gl/zmJgvWKTEFsf2vDG6" target="_blank" class="icon-link mt-1 text-xs"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
+                    <div class="place-info">
+                        <p class="font-semibold">Trivandrum International Airport (TRV) <span class="text-xs text-gray-600">(5.3 km)</span></p>
+                    </div>
+                    <a href="https://maps.app.goo.gl/zmJgvWKTEFsf2vDG6" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
                 </div>
                 <div class="grid-item">
                     <i class="fas fa-building"></i>
-                    <p class="font-semibold">Kanakakunnu Palace</p>
-                    <p class="text-xs text-gray-600">4.5 km</p>
-                    <a href="https://maps.app.goo.gl/SJfojcrqnLXrB6LCA" target="_blank" class="icon-link mt-1 text-xs"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
+                    <div class="place-info">
+                        <p class="font-semibold">Kanakakunnu Palace <span class="text-xs text-gray-600">(4.5 km)</span></p>
+                    </div>
+                    <a href="https://maps.app.goo.gl/SJfojcrqnLXrB6LCA" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
                 </div>
                 <div class="grid-item">
                     <i class="fas fa-ship"></i>
-                    <p class="font-semibold">Veli Tourist Village</p>
-                    <p class="text-xs text-gray-600">8.2 km</p>
-                    <a href="https://maps.app.goo.gl/17B2Jz9TFCsUMZG38" target="_blank" class="icon-link mt-1 text-xs"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
+                    <div class="place-info">
+                        <p class="font-semibold">Veli Tourist Village <span class="text-xs text-gray-600">(8.2 km)</span></p>
+                    </div>
+                    <a href="https://maps.app.goo.gl/17B2Jz9TFCsUMZG38" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
                 </div>
                 <div class="grid-item">
                     <i class="fas fa-mountain"></i>
-                    <p class="font-semibold">Varkala Cliff</p>
-                    <p class="text-xs text-gray-600">45 km</p>
-                    <a href="https://maps.app.goo.gl/biX1ER2Ti45PbMhs5" target="_blank" class="icon-link mt-1 text-xs"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
+                    <div class="place-info">
+                        <p class="font-semibold">Varkala Cliff <span class="text-xs text-gray-600">(45 km)</span></p>
+                    </div>
+                    <a href="https://maps.app.goo.gl/biX1ER2Ti45PbMhs5" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
                 </div>
             </div>
         </section>
@@ -408,6 +452,11 @@
 
     <footer class="text-center text-gray-600 py-6 mt-8 w-full">
         <p class="text-brown-700 mt-2 font-semibold best-compliments-section">With Best Compliments from<br>Abhijith D & Nithya Abhijith</p>
+        <p class="contact-info">In case of any queries, feel free to reach out to:</p>
+        <p class="contact-info">
+            Aswin KA: <a href="tel:+919895500618">98955 00618</a> |
+            Maneesh: <a href="tel:+919995881168">99958 81168</a>
+        </p>
     </footer>
 
     <script>
