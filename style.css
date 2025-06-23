@@ -17,8 +17,15 @@
             color: #333;
             line-height: 1.6;
             scroll-behavior: smooth;
-            /* Optional: Subtle pattern overlay for added texture */
-            /* background-image: url('data:image/svg+xml,%3Csvg width="6" height="6" viewBox="0 0 6 6" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="%23efe3d4" fill-opacity="0.4" fill-rule="evenodd"%3E%3Cpath d="M5 0h1L0 6V5zm1 6v-1L1 0h-1z"/%3E%3C/g%3E%3C/svg%3E'); */
+            opacity: 0; /* Initially hidden for fade-in effect */
+            transition: opacity 1s ease-in-out; /* Smooth fade-in for content */
+
+            /* Overall Kerala-inspired pattern (subtle) */
+            background-image: url('data:image/svg+xml,%3Csvg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="%23eee6da" fill-opacity="0.4"%3E%3Cpath d="M10 0h20L10 30V0zm10 40h20L30 70V40zM40 0h20L40 30V0zm10 40h20L60 70V40z"/%3E%3C/g%3E%3C/svg%3E'); /* Simple geometric pattern */
+            background-repeat: repeat;
+        }
+        body.loaded {
+            opacity: 1; /* Fade in on load */
         }
         h1, h2, h3, h4 {
             font-family: 'Playfair Display', serif;
@@ -198,13 +205,17 @@
 
         /* Best Compliments Section Highlight */
         .best-compliments-section {
-            font-size: 1.25rem; /* Larger font size */
+            font-size: 1.3rem; /* Slightly larger font size */
             font-weight: 700; /* Bolder */
             color: #4B371C; /* Dark brown for prominence */
-            padding-top: 1rem;
-            border-top: 2px dashed #DAA520; /* A subtle goldenrod dashed line above it */
-            margin-top: 1rem;
-            display: inline-block; /* To make border-top apply correctly */
+            padding: 0.75rem 1.5rem; /* Padding around the text */
+            border-radius: 1rem; /* Rounded corners */
+            background-color: #ffeccf; /* Very light gold/cream background */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); /* More prominent shadow */
+            border: 2px solid #DAA520; /* Gold border */
+            margin: 2rem auto; /* Center with margin, added more top margin */
+            display: inline-block; /* To contain background and border */
+            max-width: 90%; /* Max width for responsiveness */
         }
 
         /* Contact Info Styling */
@@ -223,209 +234,289 @@
             color: #3CB371;
             text-decoration: underline;
         }
+
+        /* Loading Overlay */
+        #loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fdfaf6; /* Matches body background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease-out; /* Fade out effect */
+        }
+        #loading-overlay.hidden {
+            opacity: 0;
+            pointer-events: none; /* Allows clicks on content underneath once hidden */
+        }
+
+        /* Loading Logo Animation */
+        .loading-logo {
+            width: 100px; /* Size of the logo */
+            height: 100px;
+            animation: spin 2s linear infinite; /* Spin animation */
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        /* Styles for the SVG elements */
+        .ring-path {
+            fill: none;
+            stroke: #DAA520; /* Goldenrod color for rings */
+            stroke-width: 8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
     </style>
 </head>
-<body class="bg-gradient-to-r from-purple-100 via-pink-100 to-indigo-100 min-h-screen flex flex-col justify-center items-center py-10">
+<body>
+    <!-- Loading Overlay -->
+    <div id="loading-overlay">
+        <svg class="loading-logo" viewBox="0 0 100 100">
+            <!-- Intertwining Rings -->
+            <path class="ring-path" d="M 50,20 A 30,30 0 1,1 50,80 A 30,30 0 1,1 50,20 Z" />
+            <path class="ring-path" d="M 70,50 A 30,30 0 1,1 10,50 A 30,30 0 1,1 70,50 Z" style="transform: rotate(45deg) translate(20px, 0); transform-origin: center;" />
+            <!-- Simplified: A more abstract intertwined look or just two circles -->
+            <circle class="ring-path" cx="40" cy="50" r="30" />
+            <circle class="ring-path" cx="60" cy="50" r="30" />
+            <path class="ring-path" d="M60 50 A30 30 0 0 0 40 50 M40 50 A30 30 0 0 1 60 50" stroke-width="8" stroke="#fdfaf6" fill="none" /> <!-- Overlap cover -->
 
-    <!-- Hero Section -->
-    <header class="text-center py-10 mb-8 w-full">
-        <h4 class="text-xl md:text-2xl font-light text-gray-700 mb-2 hero-text-sub">The joyous occasion of the</h4>
-        <h1 class="text-5xl md:text-7xl font-bold tracking-wider hero-text-main">Wedding Reception of</h1>
-        <h1 class="text-6xl md:text-8xl font-bold tracking-wider mt-2 hero-text-names">Viswajith & Niranjana</h1>
-        <h4 class="text-xl md:text-2xl font-light text-gray-700 mt-4 hero-text-sub">Join us in celebrating!</h4>
-    </header>
+            <!-- More abstract intertwining rings as SVG paths -->
+            <path class="ring-path" d="M 35 45 C 25 35, 25 65, 35 55 C 45 65, 45 35, 35 45" />
+            <path class="ring-path" d="M 65 55 C 75 65, 75 35, 65 45 C 55 35, 55 65, 65 55" />
+            <path class="ring-path" d="M 35 45 L 65 55" stroke-dasharray="100" stroke-dashoffset="100" style="stroke: #A52A2A; animation: draw 2s ease-out forwards; animation-delay: 0.5s;" />
 
-    <main class="container">
-        <!-- Reception Details Section (Given more weightage) -->
-        <section class="section reception-section">
-            <h2 class="text-4xl font-bold text-center mb-6 text-red-700">Reception</h2>
-            <p class="reception-intro text-center">
-                I Mrs. Dr. Kairali Dileep, Ashtapathi House, Chottanikkara, Thazhakkal Family, Ernakulam, <br>
-                request the honour of your gracious presence & blessings on the auspicious occasion of my son’s Marriage Reception.
+            <!-- Using a simpler, single set of rings for clarity -->
+            <circle cx="45" cy="50" r="25" class="ring-path" />
+            <circle cx="55" cy="50" r="25" class="ring-path" />
+            <!-- This path covers the overlapping part to give the intertwined effect -->
+            <path d="M55 25 A25 25 0 0 0 45 25 L45 25 A25 25 0 0 1 55 25 Z" fill="#fdfaf6" stroke="none" />
+             <!-- A simple two ring overlap with a cover for depth -->
+             <circle cx="40" cy="50" r="25" stroke="#DAA520" stroke-width="5" fill="none"/>
+             <circle cx="60" cy="50" r="25" stroke="#A52A2A" stroke-width="5" fill="none"/>
+             <!-- Overlap effect -->
+             <path d="M 40 75 A 25 25 0 0 1 60 75" stroke="#DAA520" stroke-width="5" fill="none" />
+             <path d="M 60 25 A 25 25 0 0 1 40 25" stroke="#A52A2A" stroke-width="5" fill="none" />
+        </svg>
+    </div>
+
+    <!-- Main content container -->
+    <div id="main-content">
+        <!-- Hero Section -->
+        <header class="text-center py-10 mb-8 w-full">
+            <h4 class="text-xl md:text-2xl font-light text-gray-700 mb-2 hero-text-sub">The joyous occasion of the</h4>
+            <h1 class="text-5xl md:text-7xl font-bold tracking-wider hero-text-main">Wedding Reception of</h1>
+            <h1 class="text-6xl md:text-8xl font-bold tracking-wider mt-2 hero-text-names">Viswajith & Niranjana</h1>
+            <h4 class="text-xl md:text-2xl font-light text-gray-700 mt-4 hero-text-sub">Join us in celebrating!</h4>
+        </header>
+
+        <main class="container">
+            <!-- Reception Details Section (Given more weightage) -->
+            <section class="section reception-section">
+                <h2 class="text-4xl font-bold text-center mb-6 text-red-700">Reception</h2>
+                <p class="reception-intro text-center">
+                    I Mrs. Dr. Kairali Dileep, Ashtapathi House, Chottanikkara, Thazhakkal Family, Ernakulam, <br>
+                    request the honour of your gracious presence & blessings on the auspicious occasion of my son’s Marriage Reception.
+                </p>
+                <div class="text-center mb-8">
+                    <p class="text-lg md:text-xl text-gray-700 mb-2">
+                        <i class="fas fa-calendar-alt text-red-700 mr-2"></i> Wednesday, 27th August 2025
+                    </p>
+                    <p class="text-lg md:text-xl text-gray-700 mb-4">
+                        <i class="fas fa-clock text-red-700 mr-2"></i> 6:00 PM - 9:00 PM
+                    </p>
+                    <p class="text-lg md:text-xl text-gray-700">
+                        <i class="fas fa-map-marker-alt text-red-700 mr-2"></i> SGP Hall, Thiruvankulam, Kochi
+                    </p>
+                    <a href="https://maps.app.goo.gl/RiVvpVF2u7eCCMBQ6" target="_blank" class="icon-link mt-2 inline-block">
+                        <i class="fas fa-external-link-alt text-green-700 mr-1"></i> View on Google Maps
+                    </a>
+                </div>
+
+                <h3 class="text-2xl font-semibold text-center mb-4 text-brown-700">Nearby Attractions from Reception Hall</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                    <div class="grid-item">
+                        <i class="fas fa-university"></i>
+                        <div class="place-info">
+                            <p class="font-semibold">Hill Palace Museum <span class="text-xs text-gray-600">(1.5 km)</span></p>
+                        </div>
+                        <a href="https://maps.app.goo.gl/dxfP3kUvrLCca8zBA" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
+                    </div>
+                    <div class="grid-item">
+                        <i class="fas fa-gopuram"></i>
+                        <div class="place-info">
+                            <p class="font-semibold">Chottanikkara Bhagavathy Temple <span class="text-xs text-gray-600">(3.4 km)</span></p>
+                        </div>
+                        <a href="https://maps.app.goo.gl/b2Qa5Lp9UJxup5yXA" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
+                    </div>
+                    <div class="grid-item">
+                        <i class="fas fa-train"></i>
+                        <div class="place-info">
+                            <p class="font-semibold">Thrippunithura Railway Station (TRTR) <span class="text-xs text-gray-600">(3.1 km)</span></p>
+                        </div>
+                        <a href="https://maps.app.goo.gl/hwJzdJerChhv5NZVA" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
+                    </div>
+                    <div class="grid-item">
+                        <i class="fas fa-subway"></i>
+                        <div class="place-info">
+                            <p class="font-semibold">Thripunithura Terminal Metro Station <span class="text-xs text-gray-600">(3.2 km)</span></p>
+                        </div>
+                        <a href="https://maps.app.goo.gl/c4s1m3hMn85WHunW9" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
+                    </div>
+                    <div class="grid-item">
+                        <i class="fas fa-dove"></i>
+                        <div class="place-info">
+                            <p class="font-semibold">Mangalavanam Bird Sanctuary <span class="text-xs text-gray-600">(15 km)</span></p>
+                        </div>
+                        <a href="https://maps.app.goo.gl/Ci2zZUALW5aZEgc97" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
+                    </div>
+                    <div class="grid-item">
+                        <i class="fas fa-water"></i>
+                        <div class="place-info">
+                            <p class="font-semibold">Marine Viewpoint <span class="text-xs text-gray-600">(13 km)</span></p>
+                        </div>
+                        <a href="https://maps.app.goo.gl/BbLWSK7w58pqHCdR7" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
+                    </div>
+                    <div class="grid-item">
+                        <i class="fas fa-train"></i>
+                        <div class="place-info">
+                            <p class="font-semibold">Ernakulam Jn Railway Station <span class="text-xs text-gray-600">(11.5 km)</span></p>
+                        </div>
+                        <a href="https://maps.app.goo.gl/GroNx9gSm97nMrVo9" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
+                    </div>
+                    <div class="grid-item">
+                        <i class="fas fa-monument"></i>
+                        <div class="place-info">
+                            <p class="font-semibold">Vasco da Gama Square <span class="text-xs text-gray-600">(21 km)</span></p>
+                        </div>
+                        <a href="https://maps.app.goo.gl/hjDePcLXggzZNa1y7" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
+                    </div>
+                    <div class="grid-item">
+                        <i class="fas fa-plane"></i>
+                        <div class="place-info">
+                            <p class="font-semibold">Cochin International Airport (COK) <span class="text-xs text-gray-600">(33 km)</span></p>
+                        </div>
+                        <a href="https://maps.app.goo.gl/vMSETDdtKFZtWqyS6" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Wedding Details Section -->
+            <section class="section">
+                <h2 class="text-4xl font-bold text-center mb-6 text-red-700">The Wedding Ceremony</h2>
+                <div class="text-center mb-8">
+                    <p class="text-lg md:text-xl text-gray-700 mb-2">
+                        <i class="fas fa-calendar-alt text-red-700 mr-2"></i> Monday, 25th August 2025
+                    </p>
+                    <p class="text-lg md:text-xl text-gray-700 mb-4">
+                        <i class="fas fa-clock text-red-700 mr-2"></i> Muhurtham: 11:00 AM - 11:40 AM
+                    </p>
+                    <p class="text-lg md:text-xl text-gray-700">
+                        <i class="fas fa-map-marker-alt text-red-700 mr-2"></i> Lalith Mahal Kalyana Mandapam, West Fort, Trivandrum
+                    </p>
+                    <a href="https://maps.app.goo.gl/sDXLrUbBY6ens6vF9" target="_blank" class="icon-link mt-2 inline-block">
+                        <i class="fas fa-external-link-alt text-green-700 mr-1"></i> View on Google Maps
+                    </a>
+                </div>
+
+                <h3 class="text-2xl font-semibold text-center mb-4 text-brown-700">Nearby Attractions from Marriage Hall</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                    <div class="grid-item">
+                        <i class="fas fa-church"></i>
+                        <div class="place-info">
+                            <p class="font-semibold">Padmanabhaswamy Temple <span class="text-xs text-gray-600">(350 m)</span></p>
+                        </div>
+                        <a href="https://g.co/kgs/csyC773" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
+                    </div>
+                    <div class="grid-item">
+                        <i class="fas fa-mask"></i>
+                        <div class="place-info">
+                            <p class="font-semibold">Sunil’s Wax Museum <span class="text-xs text-gray-600">(800 m)</span></p>
+                        </div>
+                        <a href="https://g.co/kgs/43DwBDH" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
+                    </div>
+                    <div class="grid-item">
+                        <i class="fas fa-landmark"></i>
+                        <div class="place-info">
+                            <p class="font-semibold">Kuthiramalika Palace <span class="text-xs text-gray-600">(850 m)</span></p>
+                        </div>
+                        <a href="https://maps.app.goo.gl/poT88mU9nP8Tcsed6" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
+                    </div>
+                    <div class="grid-item">
+                        <i class="fas fa-train"></i>
+                        <div class="place-info">
+                            <p class="font-semibold">Trivandrum Railway Station(TVC) <span class="text-xs text-gray-600">(2.3 km)</span></p>
+                        </div>
+                        <a href="https://maps.app.goo.gl/et8rn4243F4uX2qN7" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
+                    </div>
+                    <div class="grid-item">
+                        <i class="fas fa-paw"></i>
+                        <div class="place-info">
+                            <p class="font-semibold">Zoo <span class="text-xs text-gray-600">(4.2 km)</span></p>
+                        </div>
+                        <a href="https://maps.app.goo.gl/rYZUSvdrPRNxKSvJ7" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
+                    </div>
+                    <div class="grid-item">
+                        <i class="fas fa-plane"></i>
+                        <div class="place-info">
+                            <p class="font-semibold">Trivandrum International Airport (TRV) <span class="text-xs text-gray-600">(5.3 km)</span></p>
+                        </div>
+                        <a href="https://maps.app.goo.gl/zmJgvWKTEFsf2vDG6" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
+                    </div>
+                    <div class="grid-item">
+                        <i class="fas fa-building"></i>
+                        <div class="place-info">
+                            <p class="font-semibold">Kanakakunnu Palace <span class="text-xs text-gray-600">(4.5 km)</span></p>
+                        </div>
+                        <a href="https://maps.app.goo.gl/SJfojcrqnLXrB6LCA" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
+                    </div>
+                    <div class="grid-item">
+                        <i class="fas fa-ship"></i>
+                        <div class="place-info">
+                            <p class="font-semibold">Veli Tourist Village <span class="text-xs text-gray-600">(8.2 km)</span></p>
+                        </div>
+                        <a href="https://maps.app.goo.gl/17B2Jz9TFCsUMZG38" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
+                    </div>
+                    <div class="grid-item">
+                        <i class="fas fa-mountain"></i>
+                        <div class="place-info">
+                            <p class="font-semibold">Varkala Cliff <span class="text-xs text-gray-600">(45 km)</span></p>
+                        </div>
+                        <a href="https://maps.app.goo.gl/biX1ER2Ti45PbMhs5" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- RSVP Section -->
+            <section class="section text-center">
+                <h2 class="text-4xl font-bold mb-6 text-brown-800">Will you join us?</h2>
+                <p class="text-lg text-gray-700 mb-6">Please let us know which event(s) you'll be attending so we can make arrangements.</p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <button id="rsvpWeddingBtn" class="btn-primary text-xl"><i class="fas fa-ring mr-2"></i> Attending Wedding</button>
+                    <button id="rsvpReceptionBtn" class="btn-primary text-xl"><i class="fas fa-cocktail mr-2"></i> Attending Reception</button>
+                    <button id="rsvpBothBtn" class="btn-primary text-xl"><i class="fas fa-heart mr-2"></i> Attending Both</button>
+                </div>
+                <p class="text-md text-gray-600 mt-6">
+                    Click on the buttons above to add the event(s) to your calendar, so you won't miss out on these auspicious occasions!
+                </p>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="text-center text-gray-600 py-6 mt-8 w-full">
+            <p class="text-brown-700 font-semibold best-compliments-section">With Best Compliments from<br>Abhijith D & Nithya Abhijith</p>
+            <p class="contact-info">In case of any queries, feel free to reach out to:</p>
+            <p class="contact-info">
+                Aswin KA: <a href="tel:+919895500618">98955 00618</a> |
+                Maneesh: <a href="tel:+919995881168">99958 81168</a>
             </p>
-            <div class="text-center mb-8">
-                <p class="text-lg md:text-xl text-gray-700 mb-2">
-                    <i class="fas fa-calendar-alt text-red-700 mr-2"></i> Wednesday, 27th August 2025
-                </p>
-                <p class="text-lg md:text-xl text-gray-700 mb-4">
-                    <i class="fas fa-clock text-red-700 mr-2"></i> 6:00 PM - 9:00 PM
-                </p>
-                <p class="text-lg md:text-xl text-gray-700">
-                    <i class="fas fa-map-marker-alt text-red-700 mr-2"></i> SGP Hall, Thiruvankulam, Kochi
-                </p>
-                <a href="https://maps.app.goo.gl/RiVvpVF2u7eCCMBQ6" target="_blank" class="icon-link mt-2 inline-block">
-                    <i class="fas fa-external-link-alt text-green-700 mr-1"></i> View on Google Maps
-                </a>
-            </div>
-
-            <h3 class="text-2xl font-semibold text-center mb-4 text-brown-700">Nearby Attractions from Reception Hall</h3>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                <div class="grid-item">
-                    <i class="fas fa-university"></i>
-                    <div class="place-info">
-                        <p class="font-semibold">Hill Palace Museum <span class="text-xs text-gray-600">(1.5 km)</span></p>
-                    </div>
-                    <a href="https://maps.app.goo.gl/dxfP3kUvrLCca8zBA" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
-                </div>
-                <div class="grid-item">
-                    <i class="fas fa-gopuram"></i>
-                    <div class="place-info">
-                        <p class="font-semibold">Chottanikkara Bhagavathy Temple <span class="text-xs text-gray-600">(3.4 km)</span></p>
-                    </div>
-                    <a href="https://maps.app.goo.gl/b2Qa5Lp9UJxup5yXA" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
-                </div>
-                <div class="grid-item">
-                    <i class="fas fa-train"></i>
-                    <div class="place-info">
-                        <p class="font-semibold">Thrippunithura Railway Station (TRTR) <span class="text-xs text-gray-600">(3.1 km)</span></p>
-                    </div>
-                    <a href="https://maps.app.goo.gl/hwJzdJerChhv5NZVA" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
-                </div>
-                <div class="grid-item">
-                    <i class="fas fa-subway"></i>
-                    <div class="place-info">
-                        <p class="font-semibold">Thripunithura Terminal Metro Station <span class="text-xs text-gray-600">(3.2 km)</span></p>
-                    </div>
-                    <a href="https://maps.app.goo.gl/c4s1m3hMn85WHunW9" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
-                </div>
-                <div class="grid-item">
-                    <i class="fas fa-dove"></i>
-                    <div class="place-info">
-                        <p class="font-semibold">Mangalavanam Bird Sanctuary <span class="text-xs text-gray-600">(15 km)</span></p>
-                    </div>
-                    <a href="https://maps.app.goo.gl/Ci2zZUALW5aZEgc97" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
-                </div>
-                <div class="grid-item">
-                    <i class="fas fa-water"></i>
-                    <div class="place-info">
-                        <p class="font-semibold">Marine Viewpoint <span class="text-xs text-gray-600">(13 km)</span></p>
-                    </div>
-                    <a href="https://maps.app.goo.gl/BbLWSK7w58pqHCdR7" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
-                </div>
-                <div class="grid-item">
-                    <i class="fas fa-train"></i>
-                    <div class="place-info">
-                        <p class="font-semibold">Ernakulam Jn Railway Station <span class="text-xs text-gray-600">(11.5 km)</span></p>
-                    </div>
-                    <a href="https://maps.app.goo.gl/GroNx9gSm97nMrVo9" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
-                </div>
-                <div class="grid-item">
-                    <i class="fas fa-monument"></i>
-                    <div class="place-info">
-                        <p class="font-semibold">Vasco da Gama Square <span class="text-xs text-gray-600">(21 km)</span></p>
-                    </div>
-                    <a href="https://maps.app.goo.gl/hjDePcLXggzZNa1y7" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
-                </div>
-                <div class="grid-item">
-                    <i class="fas fa-plane"></i>
-                    <div class="place-info">
-                        <p class="font-semibold">Cochin International Airport (COK) <span class="text-xs text-gray-600">(33 km)</span></p>
-                    </div>
-                    <a href="https://maps.app.goo.gl/vMSETDdtKFZtWqyS6" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Wedding Details Section -->
-        <section class="section">
-            <h2 class="text-4xl font-bold text-center mb-6 text-red-700">The Wedding Ceremony</h2>
-            <div class="text-center mb-8">
-                <p class="text-lg md:text-xl text-gray-700 mb-2">
-                    <i class="fas fa-calendar-alt text-red-700 mr-2"></i> Monday, 25th August 2025
-                </p>
-                <p class="text-lg md:text-xl text-gray-700 mb-4">
-                    <i class="fas fa-clock text-red-700 mr-2"></i> Muhurtham: 11:00 AM - 11:40 AM
-                </p>
-                <p class="text-lg md:text-xl text-gray-700">
-                    <i class="fas fa-map-marker-alt text-red-700 mr-2"></i> Lalith Mahal Kalyana Mandapam, West Fort, Trivandrum
-                </p>
-                <a href="https://maps.app.goo.gl/sDXLrUbBY6ens6vF9" target="_blank" class="icon-link mt-2 inline-block">
-                    <i class="fas fa-external-link-alt text-green-700 mr-1"></i> View on Google Maps
-                </a>
-            </div>
-
-            <h3 class="text-2xl font-semibold text-center mb-4 text-brown-700">Nearby Attractions from Marriage Hall</h3>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                <div class="grid-item">
-                    <i class="fas fa-church"></i>
-                    <div class="place-info">
-                        <p class="font-semibold">Padmanabhaswamy Temple <span class="text-xs text-gray-600">(350 m)</span></p>
-                    </div>
-                    <a href="https://g.co/kgs/csyC773" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
-                </div>
-                <div class="grid-item">
-                    <i class="fas fa-mask"></i>
-                    <div class="place-info">
-                        <p class="font-semibold">Sunil’s Wax Museum <span class="text-xs text-gray-600">(800 m)</span></p>
-                    </div>
-                    <a href="https://g.co/kgs/43DwBDH" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
-                </div>
-                <div class="grid-item">
-                    <i class="fas fa-landmark"></i>
-                    <div class="place-info">
-                        <p class="font-semibold">Kuthiramalika Palace <span class="text-xs text-gray-600">(850 m)</span></p>
-                    </div>
-                    <a href="https://maps.app.goo.gl/poT88mU9nP8Tcsed6" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
-                </div>
-                <div class="grid-item">
-                    <i class="fas fa-train"></i>
-                    <div class="place-info">
-                        <p class="font-semibold">Trivandrum Railway Station(TVC) <span class="text-xs text-gray-600">(2.3 km)</span></p>
-                    </div>
-                    <a href="https://maps.app.goo.gl/et8rn4243F4uX2qN7" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
-                </div>
-                <div class="grid-item">
-                    <i class="fas fa-paw"></i>
-                    <div class="place-info">
-                        <p class="font-semibold">Zoo <span class="text-xs text-gray-600">(4.2 km)</span></p>
-                    </div>
-                    <a href="https://maps.app.goo.gl/rYZUSvdrPRNxKSvJ7" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
-                </div>
-                <div class="grid-item">
-                    <i class="fas fa-plane"></i>
-                    <div class="place-info">
-                        <p class="font-semibold">Trivandrum International Airport (TRV) <span class="text-xs text-gray-600">(5.3 km)</span></p>
-                    </div>
-                    <a href="https://maps.app.goo.gl/zmJgvWKTEFsf2vDG6" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
-                </div>
-                <div class="grid-item">
-                    <i class="fas fa-building"></i>
-                    <div class="place-info">
-                        <p class="font-semibold">Kanakakunnu Palace <span class="text-xs text-gray-600">(4.5 km)</span></p>
-                    </div>
-                    <a href="https://maps.app.goo.gl/SJfojcrqnLXrB6LCA" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
-                </div>
-                <div class="grid-item">
-                    <i class="fas fa-ship"></i>
-                    <div class="place-info">
-                        <p class="font-semibold">Veli Tourist Village <span class="text-xs text-gray-600">(8.2 km)</span></p>
-                    </div>
-                    <a href="https://maps.app.goo.gl/17B2Jz9TFCsUMZG38" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
-                </div>
-                <div class="grid-item">
-                    <i class="fas fa-mountain"></i>
-                    <div class="place-info">
-                        <p class="font-semibold">Varkala Cliff <span class="text-xs text-gray-600">(45 km)</span></p>
-                    </div>
-                    <a href="https://maps.app.goo.gl/biX1ER2Ti45PbMhs5" target="_blank" class="icon-link map-link"><i class="fas fa-map-marker-alt mr-1"></i>Map</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- RSVP Section -->
-        <section class="section text-center">
-            <h2 class="text-4xl font-bold mb-6 text-brown-800">Will you join us?</h2>
-            <p class="text-lg text-gray-700 mb-6">Please let us know which event(s) you'll be attending so we can make arrangements.</p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <button id="rsvpWeddingBtn" class="btn-primary text-xl"><i class="fas fa-ring mr-2"></i> Attending Wedding</button>
-                <button id="rsvpReceptionBtn" class="btn-primary text-xl"><i class="fas fa-cocktail mr-2"></i> Attending Reception</button>
-                <button id="rsvpBothBtn" class="btn-primary text-xl"><i class="fas fa-heart mr-2"></i> Attending Both</button>
-            </div>
-            <p class="text-md text-gray-600 mt-6">
-                Click on the buttons above to add the event(s) to your calendar, so you won't miss out on these auspicious occasions!
-            </p>
-        </section>
-    </main>
+        </footer>
+    </div> <!-- End of #main-content -->
 
     <!-- Success Modal -->
     <div id="successModal" class="modal hidden">
@@ -450,15 +541,6 @@
         </div>
     </div>
 
-    <footer class="text-center text-gray-600 py-6 mt-8 w-full">
-        <p class="text-brown-700 mt-2 font-semibold best-compliments-section">With Best Compliments from<br>Abhijith D & Nithya Abhijith</p>
-        <p class="contact-info">In case of any queries, feel free to reach out to:</p>
-        <p class="contact-info">
-            Aswin KA: <a href="tel:+919895500618">98955 00618</a> |
-            Maneesh: <a href="tel:+919995881168">99958 81168</a>
-        </p>
-    </footer>
-
     <script>
         // Data for events and nearby places
         const events = {
@@ -475,7 +557,7 @@
                     { name: "Sunil's Wax Museum", distance: "800 m", map: "https://g.co/kgs/43DwBDH" },
                     { name: "Kuthiramalika Palace", distance: "850 m", map: "https://maps.app.goo.gl/poT88mU9nP8Tcsed6" },
                     { name: "Trivandrum Railway Station(TVC)", distance: "2.3 km", map: "https://maps.app.goo.gl/et8rn4243F4uX2qN7" },
-                    { name: "Zoo", distance: "4.2 km", map: "https://maps.co/kgs/rYZUSvdrPRNxKSvJ7" },
+                    { name: "Zoo", distance: "4.2 km", map: "https://maps.app.goo.gl/rYZUSvdrPRNxKSvJ7" },
                     { name: "Trivandrum International Airport (TRV)", distance: "5.3 km", map: "https://maps.app.goo.gl/zmJgvWKTEFsf2vDG6" },
                     { name: "Kanakakunnu Palace", distance: "4.5 km", map: "https://maps.app.goo.gl/SJfojcrqnLXrB6LCA" },
                     { name: "Veli Tourist Village", distance: "8.2 km", map: "https://maps.app.goo.gl/17B2Jz9TFCsUMZG38" },
@@ -511,6 +593,8 @@
         const errorMessage = document.getElementById('errorMessage');
         const googleCalLink = document.getElementById('googleCalLink');
         const icsCalLink = document.getElementById('icsCalLink');
+        const loadingOverlay = document.getElementById('loading-overlay');
+        const mainContent = document.getElementById('main-content');
 
         /**
          * Shows the specified modal.
@@ -699,6 +783,17 @@ END:VCALENDAR`;
                 icsCalLink.style.display = 'inline-flex';
             }
         });
+
+        // Handle page load for preloader and content fade-in
+        window.onload = function() {
+            // Fade out the loading overlay
+            loadingOverlay.style.opacity = '0';
+            setTimeout(() => {
+                loadingOverlay.classList.add('hidden');
+                // Make body visible after overlay is hidden
+                document.body.classList.add('loaded');
+            }, 500); // Wait for fade-out transition to complete
+        };
     </script>
 </body>
 </html>
