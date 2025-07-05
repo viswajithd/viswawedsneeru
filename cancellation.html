@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Important Announcement - Wedding Update</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom Styles for Kerala/Indian Theme - adapted for somber tone */
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #fdfaf6, #fffbf7); /* Subtle warm cream background */
+            color: #333;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Full viewport height */
+            padding: 1rem; /* Padding around the content */
+
+            /* Subtle background pattern, toned down */
+            background-image: url('data:image/svg+xml,%3Csvg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="%23e0f0d8" fill-opacity="0.3"%3E%3Cpath d="M20 0h20v20H0v20h20V0z"/%3E%3Ccircle cx="20" cy="20" r="4" fill="%2361B291" fill-opacity="0.2"/%3E%3C/g%3E%3C/svg%3E');
+            background-repeat: repeat;
+        }
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+        }
+        .card-container {
+            background-color: #ffffff;
+            border-radius: 1.5rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            padding: 2.5rem;
+            border: 1px solid #f0f0f0;
+            max-width: 600px; /* Max width for readability */
+            text-align: center;
+            position: relative; /* For border elements */
+            overflow: hidden; /* Ensure borders are contained */
+        }
+        /* Kerala-inspired border for the card */
+        .card-container::before,
+        .card-container::after {
+            content: '';
+            position: absolute;
+            background-color: #DAA520; /* Goldenrod */
+            opacity: 0.7; /* Softer */
+        }
+        .card-container::before { /* Top border */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            border-top-left-radius: 1.5rem;
+            border-top-right-radius: 1.5rem;
+        }
+        .card-container::after { /* Bottom border */
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            border-bottom-left-radius: 1.5rem;
+            border-bottom-right-radius: 1.5rem;
+        }
+        .main-heading {
+            color: #A52A2A; /* IndianRed for emphasis */
+            font-size: 2.5rem; /* Larger for impact */
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+        .sub-heading {
+            color: #8B4513; /* SaddleBrown */
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .message-text {
+            color: #4B371C; /* Dark brown for main text */
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            font-style: italic; /* A touch of solemnity */
+        }
+        .apology-text {
+            color: #A52A2A; /* IndianRed for apology */
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        .signature {
+            margin-top: 2rem;
+            font-size: 1rem;
+            color: #555;
+        }
+        .signature strong {
+            color: #8B4513;
+        }
+    </style>
+</head>
+<body>
+    <div class="card-container">
+        <h1 class="main-heading font-playfair">Important Announcement</h1>
+        <h2 class="sub-heading font-playfair">Regarding the Wedding Celebrations</h2>
+
+        <p class="message-text font-inter">
+            With a heavy heart, we wish to inform all our beloved family and friends that due to unforeseen circumstances,
+            the Wedding Reception and Wedding Ceremony of Viswajith &amp; Niranjana,
+            scheduled for 27th August 2025 and 25th August 2025 respectively,
+            have been called off.
+        </p>
+        <p class="message-text font-inter">
+            We sincerely regret any inconvenience this announcement may cause to your plans.
+            Your understanding and support during this time are deeply appreciated.
+        </p>
+
+        <p class="apology-text font-inter">
+            We are truly sorry for the inconvenience.
+        </p>
+
+        <p class="signature font-inter">
+            With sincere apologies and gratitude,<br>
+            <strong>Mrs. Dr. Kairali Dileep &amp; Family</strong><br>
+            and <strong>Abhijith D &amp; Nithya Abhijith</strong>
+        </p>
+    </div>
+</body>
+</html>
